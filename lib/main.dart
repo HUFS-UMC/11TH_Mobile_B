@@ -1,7 +1,37 @@
 import 'package:flutter/material.dart';
 
 void main() {
+  runDartPractice();
   runApp(const MyApp());
+}
+
+class Movie {
+  const Movie({
+    required this.id,
+    required this.title,
+  });
+
+  final int id;
+  final String title;
+}
+
+String displayName(String? nickname) {
+  return nickname?.trim().isNotEmpty == true ? nickname! : '이름 없음';
+}
+
+void runDartPractice() {
+  final movies = <Movie>[
+    const Movie(id: 1, title: '인셉션'),
+    const Movie(id: 2, title: '인터스텔라'),
+    const Movie(id: 3, title: '토이 스토리'),
+  ];
+
+  for (final movie in movies) {
+    debugPrint(movie.title);
+  }
+
+  debugPrint(displayName(null));
+  debugPrint(displayName('무비러버'));
 }
 
 class MyApp extends StatelessWidget {
