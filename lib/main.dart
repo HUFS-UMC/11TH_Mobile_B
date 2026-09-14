@@ -6,10 +6,7 @@ void main() {
 }
 
 class Movie {
-  const Movie({
-    required this.id,
-    required this.title,
-  });
+  const Movie({required this.id, required this.title});
 
   final int id;
   final String title;
@@ -41,7 +38,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'MovieLog',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -60,7 +58,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const StartScreen(),
     );
   }
 }
@@ -146,6 +144,54 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class StartScreen extends StatelessWidget {
+  const StartScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(
+                  Icons.movie_outlined,
+                  size: 72,
+                  color: Colors.deepPurple,
+                ),
+                const SizedBox(height: 24),
+                const Text(
+                  '영화의 순간을 기록하세요',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 12),
+                const Text(
+                  '보고 싶은 영화부터 나만의 평점까지 한곳에서 관리해요',
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
+                ElevatedButton(
+                  onPressed: () {
+                    debugPrint('시작하기 버튼을 눌렀습니다.');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 48),
+                  ),
+                  child: const Text('시작하기'),
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
