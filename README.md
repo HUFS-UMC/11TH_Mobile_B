@@ -1,2 +1,7 @@
 # 11TH_Mobile_B
-Mobile`s B team repo
+
+Mobile B team repository.
+
+## MovieLog
+
+Flutter practice project for Week 0.
