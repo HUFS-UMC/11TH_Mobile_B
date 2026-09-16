@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import 'theme/app_theme.dart';
+import 'week_1/profile_screen.dart';
+
+// 앱 실행 진입점: 연습 코드를 실행한 뒤 앱을 시작한다.
 void main() {
   runDartPractice();
   runApp(const MyApp());
@@ -12,17 +17,20 @@ class Movie {
   final String title;
 }
 
+// Null Safety: 닉네임이 없거나 비어 있으면 기본값을 사용한다.
 String displayName(String? nickname) {
   return nickname?.trim().isNotEmpty == true ? nickname! : '이름 없음';
 }
 
 void runDartPractice() {
+  // List에 Movie 객체 3개를 저장한다.
   final movies = <Movie>[
     const Movie(id: 1, title: '인셉션'),
     const Movie(id: 2, title: '인터스텔라'),
     const Movie(id: 3, title: '토이 스토리'),
   ];
 
+  // for문으로 영화 제목을 출력한다.
   for (final movie in movies) {
     debugPrint(movie.title);
   }
@@ -34,31 +42,15 @@ void runDartPractice() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // StatelessWidget: 상태가 변하지 않는 앱 설정 화면이다.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'MovieLog',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const StartScreen(),
+      // 앱 전체 Theme과 첫 화면을 연결한다.
+      theme: AppTheme.light,
+      home: const ProfileScreen(),
     );
   }
 }
@@ -154,6 +146,7 @@ class StartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // build는 현재 화면의 Widget Tree를 선언한다.
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -162,10 +155,12 @@ class StartScreen extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Icon(
-                  Icons.movie_outlined,
-                  size: 72,
-                  color: Colors.deepPurple,
+                // SVG Asset은 파일 경로로 불러온다.
+                SvgPicture.asset(
+                  'assets/logos/movielog_logo.svg',
+                  width: 72,
+                  height: 72,
+                  semanticsLabel: 'MovieLog 로고',
                 ),
                 const SizedBox(height: 24),
                 const Text(
