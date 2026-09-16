@@ -129,7 +129,7 @@ class _ProfileHeader extends StatelessWidget {
           child: ClipOval(
             // 로컬 비트맵 이미지를 Asset 경로로 불러온다.
             child: Image.asset(
-              'assets/images/profileimage.jpeg',
+              'assets/images/profile/profile_movielog.jpg',
               fit: BoxFit.cover,
             ),
           ),

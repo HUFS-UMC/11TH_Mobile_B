@@ -8,6 +8,7 @@ abstract final class AppTheme {
   // ThemeData: 앱 전체의 색상, 글꼴, AppBar를 설정한다.
   static final light = ThemeData(
     useMaterial3: true,
+    fontFamily: 'Manrope',
     colorScheme: ColorScheme.fromSeed(
       seedColor: AppColors.violet,
       surface: AppColors.warmWhite,
