@@ -5,6 +5,8 @@ abstract final class AppColors {
   static const violet = Color(0xFF6750A4);
   static const lavender = Color(0xFFE8DEFF);
   static const lavenderBorder = Color(0xFFE4D8FF);
+  static const fieldBorder = Color(0xFFCAC4D0);
+  static const disabledButton = Color(0xFFCEC5DF);
   static const warmWhite = Color(0xFFFAF9F5);
   static const black = Color(0xFF1C1B1F);
   static const gray = Color(0xFF79747E);

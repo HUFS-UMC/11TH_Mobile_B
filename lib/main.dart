@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'theme/app_theme.dart';
-import 'week_1/profile_screen.dart';
+import 'week_2/signup_screen.dart';
 
 // 앱 실행 진입점: 연습 코드를 실행한 뒤 앱을 시작한다.
 void main() {
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
       title: 'MovieLog',
       // 앱 전체 Theme과 첫 화면을 연결한다.
       theme: AppTheme.light,
-      home: const ProfileScreen(),
+      home: const SignupScreen(),
     );
   }
 }
