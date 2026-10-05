@@ -1,23 +1,21 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:movielog/main.dart';
+import 'package:movielog/week_3/data/mock_movies.dart';
 
 void main() {
-  testWidgets('uses the new profile asset and Manrope app theme', (
+  test('findMovieById returns the matching mock movie', () {
+    expect(findMovieById('starlight')?.title, '별빛 아래 우리');
+    expect(findMovieById('missing'), isNull);
+  });
+
+  testWidgets('starts on welcome screen and opens the signup route', (
     WidgetTester tester,
   ) async {
     await tester.pumpWidget(const MyApp());
-
-    expect(
-      tester.widget<MaterialApp>(find.byType(MaterialApp)).theme?.fontFamily,
-      'Manrope',
-    );
-
-    final profileImage = tester.widget<Image>(find.byType(Image));
-    expect(
-      (profileImage.image as AssetImage).assetName,
-      'assets/images/profile/profile_movielog.jpg',
-    );
+    expect(find.text('시작하기'), findsOneWidget);
+    await tester.tap(find.text('시작하기'));
+    await tester.pumpAndSettle();
+    expect(find.text('회원가입'), findsOneWidget);
   });
 }
